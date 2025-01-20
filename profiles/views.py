@@ -17,8 +17,13 @@ class PublicProfileView(DetailView):
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
 
-        # Registra a visualização
-        ip_address = self.request.META.get('REMOTE_ADDR')
+        # Obtém o IP com fallbacks
+        x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip_address = x_forwarded_for.split(',')[0]
+        else:
+            ip_address = self.request.META.get('REMOTE_ADDR', '0.0.0.0')
+
         brand = self.object
         PageView.objects.create(brand=brand, ip_address=ip_address)
         brand.total_visualizacoes += 1
