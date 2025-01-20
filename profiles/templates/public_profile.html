@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
-
+{% block title %}{{ brand.nome_marca }}{% endblock %}
+{% block meta_description %}{{ brand.descricao }}{% endblock %}
+{% block meta_keywords %}{{ brand.nome_marca }}, pamonharias, pamonha, pamonha artesanal, pamonha caseira, pamonha de milho, pamonha de milho artesanal, pamonha de milho caseira{% endblock %}
+{% block meta_author %}Wilker Santos{% endblock %}
+{% block meta_robots %}index, follow{% endblock %}
 {% block content %}
     <div class="container">
         <img src="{{ brand.logotipo.url }}" alt="Logo" class="logo">
