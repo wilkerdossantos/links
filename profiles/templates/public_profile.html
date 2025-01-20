@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <img src="{{ brand.logotipo.url }}" alt="Logo" class="logo">
+        <div class="title">{{ brand.nome_marca }}</div>
+        <p>{{brand.descricao}}</p>
+        <p>Visualizações: {{ brand.total_visualizacoes }}</p>
+        {% for link in links %}
+            <a href="{{link.url}}" 
+               class="link" 
+               data-link-id="{{link.id}}"
+               onclick="trackClick(event, this)">
+                <i class="bi bi-{{link.url_type}}"></i> 
+                {{link.title}}
+                <span class="click-count">({{link.clicks_count}} cliques)</span>
+            </a>
+        {% endfor %}
+    </div>
+
+    <script>
+    function trackClick(event, element) {
+        event.preventDefault();
+        const linkId = element.dataset.linkId;
+        const url = element.href;
+        
+        fetch(`/link/${linkId}/click/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                element.querySelector('.click-count').textContent = `(${data.clicks} cliques)`;
+                window.open(url, '_blank');
+            }
+        });
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    </script>
+{% endblock %}
