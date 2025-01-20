@@ -1,0 +1,40 @@
+body {
+    background-color: #fdf493; /* Base yellow from the logo */
+    background-image: url('/media/26519.jpg'); /* Replace with actual URL of corn leaves image */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for readability */
+    padding: 20px;
+    border-radius: 15px;
+}
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+.title {
+    color: #4a9016; /* Green from the logo */
+    font-size: 24px;
+    font-weight: bold;
+}
+.link {
+    background-color: #4a9016; /* Green from the logo */
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+}
+.link:hover {
+    background-color: #3a7312; /* Slightly darker green */
+    text-decoration: none;
+}

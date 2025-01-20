@@ -15,7 +15,6 @@ db.sqlite3
 
 # Arquivos de mídia e estáticos
 media/
-static/
 staticfiles/
 
 # Arquivos de configuração IDE
