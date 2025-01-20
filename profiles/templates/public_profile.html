@@ -34,8 +34,11 @@
         .then(data => {
             if (data.success) {
                 element.querySelector('.click-count').textContent = `(${data.clicks} cliques)`;
-                window.open(url, '_blank');
+                window.location.href = url;
             }
+        })
+        .catch(error => {
+            window.location.href = url;
         });
     }
 
