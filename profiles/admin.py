@@ -2,12 +2,14 @@ from django.contrib import admin
 from .models import Link, Brand
 
 
-admin.site.register(Link)
+@admin.register(Link)
 class LinkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'url', 'order')
+    list_display = ('title', 'url', 'order', 'clicks_count',)
+    readonly_fields = ('clicks_count',)
 
 
-admin.site.register(Brand)
+@admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ('nome_marca', 'email', 'descricao', 'tema', 'slug')
+    list_display = ('nome_marca', 'slug', 'total_visualizacoes',)
     prepopulated_fields = {'slug': ('nome_marca',)}
+    readonly_fields = ('total_visualizacoes',)

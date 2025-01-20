@@ -16,25 +16,29 @@ body {
 .logo {
     width: 150px;
     margin-bottom: 20px;
+    border-radius: 50%;
 }
 .title {
-    color: #4a9016; /* Green from the logo */
+    color: #ffd000;
+    -webkit-text-stroke: 1px #008f08;
     font-size: 24px;
     font-weight: bold;
 }
 .link {
-    background-color: #4a9016; /* Green from the logo */
+    background-color: #ffd000; /* Green from the logo */
     color: #ffffff;
     border: none;
     padding: 15px;
     margin: 10px 0;
     border-radius: 10px;
+    border-color: #008f08;
+    border-style: solid;
     text-decoration: none;
     display: block;
     font-size: 18px;
     font-weight: bold;
 }
 .link:hover {
-    background-color: #3a7312; /* Slightly darker green */
+    background-color: #bbae24; /* Slightly darker green */
     text-decoration: none;
 }

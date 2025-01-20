@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <img src="{{ brand.logotipo.url }}" alt="Logo" class="logo">
+    <h1 class="title">{{ brand.nome_marca }}</h1>
+    <p>{{ brand.bio }}</p>
+</div>
+{% endblock %}

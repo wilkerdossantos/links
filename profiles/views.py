@@ -1,7 +1,6 @@
 from django.views.generic import DetailView
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
 from .models import Link, Brand, PageView
+from django.shortcuts import get_object_or_404, redirect
 
 
 class PublicProfileView(DetailView):
@@ -30,13 +29,15 @@ class PublicProfileView(DetailView):
         brand.save()
 
         return response
+    
+class BioView(DetailView):
+    model = Brand
+    template_name = 'bio.html'
+    context_object_name = 'brand'
 
-@require_POST
-def increment_link_click(request, link_id):
-    try:
-        link = Link.objects.get(id=link_id)
-        link.clicks_count += 1
-        link.save()
-        return JsonResponse({'success': True, 'clicks': link.clicks_count})
-    except Link.DoesNotExist:
-        return JsonResponse({'success': False}, status=404)
+
+def track_click(request, link_id):
+    link = get_object_or_404(Link, id=link_id)
+    link.clicks_count += 1
+    link.save()
+    return redirect(link.url)
