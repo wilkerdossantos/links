@@ -9,5 +9,6 @@
     <img src="{{ brand.logotipo.url }}" alt="Logo" class="logo">
     <h1 class="title">{{ brand.nome_marca }}</h1>
     <p>{{ brand.bio }}</p>
+    <a href="{% url 'public_profile' brand.slug %}" class="btn btn-warning"> ↩️ Voltar</a>
 </div>
 {% endblock %}

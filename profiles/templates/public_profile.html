@@ -12,9 +12,9 @@
         <p>Visualizações: {{ brand.total_visualizacoes }}</p>
         <a href="{% url 'bio' brand.slug %}" class="link">Nossa História</a>
         {% for link in links %}
-            <a href="{{link.url}}" 
+            <a href="{% url 'track_click' link.id %}" 
                class="link" 
-               data-link-id="{{link.id}}">
+               data-link-id="{{link.id}}"
                 <i class="bi bi-{{link.url_type}}"></i> 
                 {{link.title}}
             </a>
